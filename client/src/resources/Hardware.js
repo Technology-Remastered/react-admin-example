@@ -3,6 +3,9 @@ import {
   List,
   Datagrid,
   TextField,
+  ReferenceArrayField,
+  SingleFieldList,
+  ChipField,
   EditButton,
   DeleteButton,
   Create,
@@ -23,9 +26,14 @@ import RichTextInput from "ra-input-rich-text";
 
 const HardwareList = (props) => {
   return (
-    <List {...props}>
+    <List title='Υλικά' {...props}>
       <Datagrid>
-        <TextField source="name" />
+        <TextField label='Όνομα' source="name" />
+        <ReferenceArrayField label="Τμήματα" source="division_ids" reference="division">
+          <SingleFieldList>
+              <ChipField source="name" />
+          </SingleFieldList>
+        </ReferenceArrayField>
         <EditButton />
         <DeleteButton />
       </Datagrid>
@@ -35,7 +43,7 @@ const HardwareList = (props) => {
 
 const HardwareCreate = (props) => {
   return (
-    <Create title="Create a hardware item" {...props}>
+    <Create title="Δημιουργία υλικού" {...props}>
       <HardwareForm />
     </Create>
   );
@@ -43,7 +51,7 @@ const HardwareCreate = (props) => {
 
 const HardwareEdit = (props) => {
   return (
-    <Edit title="Edit a hardware item" {...props}>
+    <Edit title="Επεξεργασία υλικού" {...props}>
       <HardwareForm />
     </Edit>
   );
@@ -52,37 +60,37 @@ const HardwareEdit = (props) => {
 const HardwareForm = (props) => {
   return (
     <SimpleForm {...props}>
-      <TextInput source="name" fullWidth />
+      <TextInput label='Όνομα' source="name" fullWidth />
       <ReferenceArrayInput
+        label='Τμήματα'
         source="division_ids"
         reference="division"
-        label="Divisions"
         fullWidth
       >
         <SelectArrayInput optionText="name" />
       </ReferenceArrayInput>
-      <RichTextInput source="info" />
-      <ArrayInput source="instructions">
+      <RichTextInput label='Πληροφορίες' source="info" />
+      <ArrayInput label='Οδηγίες' source="instructions">
         <SimpleFormIterator>
-          <TextInput source="title" label="Title" />
-          <RichTextInput source="body" label="Body" />
+          <TextInput source="title" label="Τίτλος" />
+          <RichTextInput source="body" label="Σώμα" />
         </SimpleFormIterator>
       </ArrayInput>
       <FileInput
         source="manuals"
-        label="Related manuals"
+        label="Εγχειρίδια"
         multiple
         accept="application/pdf"
       >
-        <FileField source="src" title="title" />
+        <FileField source="src" title="Τίτλος" />
       </FileInput>
       <ImageInput
         source="images"
-        label="Related images"
+        label="Εικόνες"
         multiple
         accept="image/*"
       >
-        <ImageField source="src" title="title" />
+        <ImageField source="src" title="Τίτλος" />
       </ImageInput>
     </SimpleForm>
   );

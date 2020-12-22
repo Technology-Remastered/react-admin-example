@@ -18,9 +18,9 @@ import UserIcon from '@material-ui/icons/People';
 
 const UserList = (props) => {
   return (
-    <List {...props}>
+    <List title="Χρήστες" {...props}>
       <Datagrid>
-        <TextField source="fullname" />
+        <TextField label='Πλήρες όνομα' source="fullname" />
         <EmailField source="email" />
         <EditButton />
         <DeleteButton />
@@ -31,16 +31,16 @@ const UserList = (props) => {
 
 const UserCreate = (props) => {
   return (
-    <Create title="Create a User" {...props}>
+    <Create title="Δημιουργία χρήστη" {...props}>
       <SimpleForm>
-        <TextInput source="username" />
-        <PasswordInput source="password" />
-        <TextInput source="fullname" />
+        <TextInput label='Όνομα χρήστη' source="username" />
+        <PasswordInput label='Κωδικός' source="password" />
+        <TextInput label='Πλήρες όνομα' source="fullname" />
         <TextInput source="email" />
         <ReferenceArrayInput
+          label='Τμήματα'
           source="division_ids"
           reference="division"
-          label="Divisions"
           fullWidth
         >
           <SelectArrayInput optionText="name" />
@@ -52,15 +52,15 @@ const UserCreate = (props) => {
 
 const UserEdit = (props) => {
   return (
-    <Edit title="Edit User" {...props}>
+    <Edit title="Επεξεργασία χρήστη" {...props}>
       <SimpleForm>
-        <TextField source="username" />
-        <TextInput source="fullname" />
+        <TextField label='Όνομα χρήστη' source="username" />
+        <TextInput label='Πλήρες όνομα' source="fullname" />
         <TextInput source="email" />
         <ReferenceArrayInput
+          label='Τμήματα'
           source="division_ids"
           reference="division"
-          label="Divisions"
           fullWidth
         >
           <SelectArrayInput optionText="name" />

@@ -28,12 +28,12 @@ const statusChoices = [
 
 const EventList = (props) => {
   return (
-    <List {...props}>
+    <List title='Συμβάντα' {...props}>
       <Datagrid>
-        <TextField source="name" />
-        <SelectField source="priority" choices={priorityChoices} />
-        <SelectField source="status" choices={statusChoices} />
-        <DateField source="updated_at" />
+        <TextField label='Όνομα' source="name" />
+        <SelectField label='Προτεραιότητα' source="priority" choices={priorityChoices} />
+        <SelectField label='Κατάσταση' source="status" choices={statusChoices} />
+        <DateField label='Ενημερώθηκε στις' source="updated_at" />
         <EditButton />
       </Datagrid>
     </List>
@@ -42,7 +42,7 @@ const EventList = (props) => {
 
 const EventEdit = (props) => {
   return (
-    <Edit title="Edit an event" {...props}>
+    <Edit title="Επεξεργασία συμβάντος" {...props}>
       <EventForm />
     </Edit>
   );
@@ -51,14 +51,14 @@ const EventEdit = (props) => {
 const EventForm = (props) => {
   return (
     <SimpleForm {...props}>
-      <TextField source="name" fullWidth />
-      <RichTextField source="info" fullWidth />
-      <SelectField source="priority" choices={priorityChoices} />
-      <SelectInput source="status" choices={statusChoices} />
-      <DateField source="updated_at" />
-      <ReferenceField label="Hardware" source="hardware_id" reference="hardware">
+      <TextField label='Όνομα' source="name" fullWidth />
+      <RichTextField label='Πληροφορίες' source="info" fullWidth />
+      <SelectField label='Προτεραιότητα' source="priority" choices={priorityChoices} />
+      <SelectInput label='Κατάσταση' source="status" choices={statusChoices} />
+      <DateField label='Ενημερώθηκε στις' source="updated_at" />
+      <ReferenceField label="Υλικό" source="hardware_id" reference="hardware">
         <TextField source="name" />
-    </ReferenceField>
+      </ReferenceField>
     </SimpleForm>
   );
 };

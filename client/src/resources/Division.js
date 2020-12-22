@@ -17,10 +17,10 @@ import DivisionIcon from '@material-ui/icons/AccountTree';
 
 const DivisionList = (props) => {
   return (
-    <List {...props}>
+    <List title="Τμήματα" {...props}>
       <Datagrid>
-        <TextField source="name" />
-        <ReferenceField label="Root" source="parent_id" reference="division">
+        <TextField label="Όνομα" source="name" />
+        <ReferenceField label="Μητρικό τμήμα" source="parent_id" reference="division">
           <TextField source="name" />
         </ReferenceField>
         <EditButton />
@@ -32,10 +32,10 @@ const DivisionList = (props) => {
 
 const DivisionCreate = (props) => {
   return (
-    <Create title="Create a Division" {...props}>
+    <Create title="Δημιουργία τμήματος" {...props}>
       <SimpleForm>
-        <TextInput source="name" />
-        <ReferenceInput label="Root" source="parent_id" reference="division">
+        <TextInput label="Όνομα" source="name" />
+        <ReferenceInput label="Μητρικό τμήμα" source="parent_id" reference="division">
             <SelectInput optionText="name" />
         </ReferenceInput>
       </SimpleForm>
@@ -45,10 +45,10 @@ const DivisionCreate = (props) => {
 
 const DivisionEdit = (props) => {
     return (
-      <Edit title="Edit a Division" {...props}>
+      <Edit title="Επεξεργασία τμήματος" {...props}>
         <SimpleForm>
-          <TextInput source="name" />
-          <ReferenceInput label="Root" source="parent_id" reference="division">
+          <TextInput label="Όνομα" source="name" />
+          <ReferenceInput label="Μητρικό τμήμα" source="parent_id" reference="division">
               <SelectInput optionText="name" />
           </ReferenceInput>
         </SimpleForm>

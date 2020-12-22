@@ -3,24 +3,26 @@ import React from 'react';
 import { Admin, Resource } from 'react-admin';
 
 // Providers
-import restProvider from 'ra-data-simple-rest';
+import dataProvider from './providers/dataProvider';
 import authProvider from './providers/authProvider';
-//import i18nProvider from './providers/i18nProvider';
+import i18nProvider from './providers/i18nProvider';
 
 // Resources
-import { UserList, UserCreate, UserEdit, UserIcon } from './components/User';
-import { DivisionList, DivisionCreate, DivisionEdit, DivisionIcon } from './components/Division';
-import { HardwareList, HardwareCreate, HardwareEdit, HardwareIcon } from './components/Hardware';
-import { EventList, EventEdit, EventIcon } from './components/Event';
+import { UserList, UserCreate, UserEdit, UserIcon } from './resources/User';
+import { DivisionList, DivisionCreate, DivisionEdit, DivisionIcon } from './resources/Division';
+import { HardwareList, HardwareCreate, HardwareEdit, HardwareIcon } from './resources/Hardware';
+import { EventList, EventEdit, EventIcon } from './resources/Event';
 
 function App() {
   return (
     <Admin
-      dataProvider={ restProvider('http://localhost:3000') }
+      dataProvider={dataProvider}
       authProvider={authProvider}
+      i18nProvider={i18nProvider}
     >
       <Resource
         name='division'
+        options={{ label: 'Τμήματα' }}
         list={DivisionList}
         create={DivisionCreate}
         edit={DivisionEdit}
@@ -28,6 +30,7 @@ function App() {
       />
       <Resource
         name='user'
+        options={{ label: 'Χρήστες' }}
         list={UserList}
         create={UserCreate}
         edit={UserEdit}
@@ -35,6 +38,7 @@ function App() {
       />
       <Resource
         name='hardware'
+        options={{ label: 'Υλικά' }}
         list={HardwareList}
         create={HardwareCreate}
         edit={HardwareEdit}
@@ -42,6 +46,7 @@ function App() {
       />
       <Resource
         name='event'
+        options={{ label: 'Συμβάντα' }}
         list={EventList}
         edit={EventEdit}
         icon={EventIcon}
